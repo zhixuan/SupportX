@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18E7DF4F1F7B86DE00645E34 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E7DF4E1F7B86DE00645E34 /* HealthKit.framework */; };
+		18E7DF511F7B874500645E34 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E7DF501F7B874500645E34 /* HomeKit.framework */; };
 		18FD98CD1F7B6F19006D68DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD98CC1F7B6F19006D68DB /* main.m */; };
 		18FD98D01F7B6F19006D68DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD98CF1F7B6F19006D68DB /* AppDelegate.m */; };
 		18FD98D31F7B6F19006D68DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FD98D21F7B6F19006D68DB /* ViewController.m */; };
@@ -16,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18E7DF4A1F7B86C200645E34 /* SupportX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SupportX.entitlements; sourceTree = "<group>"; };
+		18E7DF4E1F7B86DE00645E34 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		18E7DF501F7B874500645E34 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		18FD98C81F7B6F19006D68DB /* SupportX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SupportX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18FD98CC1F7B6F19006D68DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18FD98CE1F7B6F19006D68DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -33,17 +38,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E7DF511F7B874500645E34 /* HomeKit.framework in Frameworks */,
+				18E7DF4F1F7B86DE00645E34 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18E7DF4B1F7B86C200645E34 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18E7DF501F7B874500645E34 /* HomeKit.framework */,
+				18E7DF4E1F7B86DE00645E34 /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		18FD98BF1F7B6F19006D68DB = {
 			isa = PBXGroup;
 			children = (
 				18FD98CA1F7B6F19006D68DB /* SupportX */,
 				18FD98C91F7B6F19006D68DB /* Products */,
+				18E7DF4B1F7B86C200645E34 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +75,7 @@
 		18FD98CA1F7B6F19006D68DB /* SupportX */ = {
 			isa = PBXGroup;
 			children = (
+				18E7DF4A1F7B86C200645E34 /* SupportX.entitlements */,
 				18FD98CE1F7B6F19006D68DB /* AppDelegate.h */,
 				18FD98CF1F7B6F19006D68DB /* AppDelegate.m */,
 				18FD98D11F7B6F19006D68DB /* ViewController.h */,
@@ -110,8 +128,16 @@
 				TargetAttributes = {
 					18FD98C71F7B6F19006D68DB = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = ET4D37Y843;
+						DevelopmentTeam = ZH55FC37P2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+							com.apple.HomeKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -200,7 +226,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 1099028580@qq.com (AQ77T7RG6C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 1099028580@qq.com (AQ77T7RG6C)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -219,7 +246,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -247,7 +274,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 1099028580@qq.com (AQ77T7RG6C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 1099028580@qq.com (AQ77T7RG6C)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -260,7 +288,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -271,11 +299,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ET4D37Y843;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = SupportX/SupportX.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZH55FC37P2;
 				INFOPLIST_FILE = SupportX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.lvye.com.SupportX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cn.SupportX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -283,11 +316,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ET4D37Y843;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = SupportX/SupportX.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZH55FC37P2;
 				INFOPLIST_FILE = SupportX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = www.lvye.com.SupportX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cn.SupportX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -310,6 +349,7 @@
 				18FD98E11F7B6F19006D68DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

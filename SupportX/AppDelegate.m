@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <HealthKit/HealthKit.h>
 
 @interface AppDelegate ()
 
@@ -16,7 +17,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    [self setIsHealthDataAvailable];
+    
+    NSLog(@"1122");
     return YES;
 }
 
@@ -46,6 +50,60 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma mark - 设置写入权限
+- (NSSet *)dataTypesToWrite {
+    HKQuantityType *stepType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+    return [NSSet setWithObjects:stepType, nil];
+}
+
+#pragma mark - 设置读取权限
+- (NSSet *)dataTypesToRead {
+    HKQuantityType *stepType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+    return [NSSet setWithObjects:stepType, nil];
+}
+
+- (void)setIsHealthDataAvailable{
+
+    if ([HKHealthStore isHealthDataAvailable]) {
+        
+        HKHealthStore * healthStore = [[HKHealthStore alloc]init];
+        
+        NSSet *writeDataTypes = [self dataTypesToWrite];
+        NSSet *readDataTypes = [self dataTypesToRead];
+        [healthStore requestAuthorizationToShareTypes:writeDataTypes readTypes:readDataTypes completion:^(BOOL success, NSError *error) {
+            if (!success) {
+                NSLog(@"你不允许包来访问这些读/写数据类型。error === %@", error);
+                return;
+            }
+        }];
+        
+        switch ([healthStore authorizationStatusForType:[HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount]])
+        
+        {
+                
+            case 0:
+                NSLog(@"用户尚未作出选择，关于是否该应用程序可以保存指定类型的对象");
+                break;
+            case 1:
+
+                NSLog(@"1此应用程序不允许保存指定类型的对象");
+                
+                break;
+                
+            case 2:
+                
+                NSLog(@"2此应用程序被授权保存指定类型的对象");
+                
+                break;
+                
+            default:
+                break;
+                
+        }
+    }
+}
+
 
 
 @end
